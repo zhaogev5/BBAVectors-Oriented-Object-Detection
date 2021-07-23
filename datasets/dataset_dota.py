@@ -7,22 +7,10 @@ from .DOTA_devkit.ResultMerge_multi_process import mergebypoly
 class DOTA(BaseDataset):
     def __init__(self, data_dir, phase, input_h=None, input_w=None, down_ratio=None):
         super(DOTA, self).__init__(data_dir, phase, input_h, input_w, down_ratio)
-        self.category = ['plane',
-                         'baseball-diamond',
-                         'bridge',
-                         'ground-track-field',
-                         'small-vehicle',
-                         'large-vehicle',
-                         'ship',
-                         'tennis-court',
-                         'basketball-court',
-                         'storage-tank',
-                         'soccer-ball-field',
-                         'roundabout',
-                         'harbor',
-                         'swimming-pool',
-                         'helicopter'
-                         ]
+        self.category = ['Dry-Cargo-Ship', 'Passenger-Ship', 'Fishing-Boat', 'Engineering-Ship', 'Motorboat', 'A220', 'Boeing737', 'Liquid-Cargo-Ship',\
+ 'Cargo-Truck', 'Small-Car', 'Dump-Truck', 'Van', 'Excavator', 'Intersection', 'other-vehicle', 'A321', 'Tennis-Court', 'Basketball-Court', \
+ 'other-airplane', 'Boeing787', 'Warship', 'Tugboat', 'other-ship', 'Tractor', 'Bus', 'Roundabout', 'ARJ21', 'Boeing747', 'Football-Field', \
+ 'Trailer', 'Truck-Tractor', 'Bridge', 'Baseball-Field', 'A330', 'A350', 'Boeing777', 'C919']
         self.color_pans = [(204,78,210),
                            (0,192,255),
                            (0,131,0),
@@ -57,7 +45,7 @@ class DOTA(BaseDataset):
 
     def load_image(self, index):
         img_id = self.img_ids[index]
-        imgFile = os.path.join(self.image_path, img_id+'.png')
+        imgFile = os.path.join(self.image_path, img_id+'.jpg')
         assert os.path.exists(imgFile), 'image {} not existed'.format(imgFile)
         img = cv2.imread(imgFile)
         return img
